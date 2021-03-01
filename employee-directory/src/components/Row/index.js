@@ -1,32 +1,39 @@
 import React, { useEffect, useState } from "react";
 import "./style.css";
 // import Employee from "../Employee"
-import API from "../../utils/API";
+// import API from "../../utils/API";
 
-function Row() {
-    const [employees, setEmployees] = useState();
+function Row(props) {
 
-    useEffect(() => {
-        console.log('useEffect')
-        // API.search().then(res => {
-        //     setEmployees(res.data.results);
-        //     console.log("Employee State:");
-        //     console.log(employees);
-        // });
-    }, [employees]);
 
     return (
+        // <h1>broken</h1>
         <tbody>
-            {employees.map((emp) => {
-                <tr>
-                    <th scope="row">
-                        <img alt={"photo-" + employees.id.value} src={employees.picture.thumbnail} />
-                working?
+
+            {/* {props.employees.map((emp) => ( */}
+            <tr>
+                <th scope="row">
+                    <img alt={"photo-" + props.last} src={props.photo} />
                 </th>
-                    {/* <Employee /> */}
-                </tr>
-            }
-            )}
+                <th scope="row">
+                    {props.first}
+                </th>
+                <th scope="row">
+                    {props.last}
+                </th>
+                <th scope="row">
+                    {props.age}
+                </th>
+                <th scope="row">
+                    {props.phone}
+                </th>
+                <th scope="row">
+                    {props.email}
+                </th>
+                {/* <Employee /> */}
+            </tr>
+            {/* ))} */}
+
         </tbody>
     )
 }
