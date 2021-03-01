@@ -25,7 +25,8 @@
 // export default getEmployees;
 import axios from "axios";
 const BASEURL = "https://randomuser.me/api/?results=5";
-
+// const APIKEY = "&apikey=trilogy";
+// const query = "hound"
 export default {
     search: function () {
         return axios.get(BASEURL);
