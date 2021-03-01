@@ -24,10 +24,10 @@ function Wrapper(props) {
             .then(json => setEmployees(json.results))
     }, []);
     let names = [];
-    employees.map(emp => {
-        names.push(emp.name.first)
-        names.push(emp.name.last)
-    })
+    // employees.map(emp => {
+    //     names.push(emp.name.first)
+    //     names.push(emp.name.last)
+    // })
     console.log(names)
     return (
         <div>
@@ -48,7 +48,7 @@ function Wrapper(props) {
                                 <th scope="col">Email</th>
                             </tr>
                         </thead>
-                        {employees.map(emp => {
+                        {/* {employees.map(emp => {
                             return (
                                 <Row
                                     photo={emp.picture.thumbnail}
@@ -60,7 +60,7 @@ function Wrapper(props) {
                                 />
                             )
                         })
-                        }
+                        } */}
                     </table>
                 </div>
             </main>
