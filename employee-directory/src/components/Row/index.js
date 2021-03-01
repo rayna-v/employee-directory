@@ -7,23 +7,27 @@ function Row() {
     const [employees, setEmployees] = useState();
 
     useEffect(() => {
-        API.search().then(res => {
-            setEmployees(res.data.results);
-            console.log("Employee State:");
-            console.log(employees[0]);
-        });
-    }, []);
+        console.log('useEffect')
+        // API.search().then(res => {
+        //     setEmployees(res.data.results);
+        //     console.log("Employee State:");
+        //     console.log(employees);
+        // });
+    }, [employees]);
 
     return (
-        <div>
-            <tr>
-                <th scope="row">
-                    <img alt={"photo-" + employees[0].id.value} src={employees[0].picture.thumbnail} />
-
+        <tbody>
+            {employees.map((emp) => {
+                <tr>
+                    <th scope="row">
+                        <img alt={"photo-" + employees.id.value} src={employees.picture.thumbnail} />
+                working?
                 </th>
-                {/* <Employee /> */}
-            </tr>
-        </div>
+                    {/* <Employee /> */}
+                </tr>
+            }
+            )}
+        </tbody>
     )
 }
 
