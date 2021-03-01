@@ -9,7 +9,7 @@ import Row from "../Row"
 
 function Wrapper(props) {
     // console.log(props.children)
-    const [employees, setEmployees] = useState();
+    const [employees, setEmployees] = useState([]);
     console.log(employees)
     useEffect(() => {
         // API.search().then(res => {
@@ -28,7 +28,7 @@ function Wrapper(props) {
     //     names.push(emp.name.first)
     //     names.push(emp.name.last)
     // })
-    console.log(names)
+    console.log(employees)
     return (
         <div>
             <main className="wrapper">
@@ -48,7 +48,7 @@ function Wrapper(props) {
                                 <th scope="col">Email</th>
                             </tr>
                         </thead>
-                        {/* {employees.map(emp => {
+                        {employees.map(emp => {
                             return (
                                 <Row
                                     photo={emp.picture.thumbnail}
@@ -60,7 +60,7 @@ function Wrapper(props) {
                                 />
                             )
                         })
-                        } */}
+                        }
                     </table>
                 </div>
             </main>
