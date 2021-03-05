@@ -2,32 +2,7 @@ import React, { useState } from "react";
 import "./style.css";
 
 function Search(props) {
-    console.log(props)
-    const [searched, setSearched] = useState({
-        search: ""
-    })
-    const [sort, setSort] = useState({
-        display: "default",
-        sortEmps: []
-    })
-    console.log(searched)
-    function handleInputChange(event) {
-        setSearched({
-            [event.target.name]: event.target.value
-        });
-        searching();
-    }
-    function searching(props) {
-        props.forEach(name => {
-            if (name.includes(searched)) {
 
-            }
-        })
-    }
-    function handleFormSubmit(event) {
-        event.preventDefault();
-        console.log("submitted")
-    }
     return (
         <div>
             <form className="search" >
@@ -35,7 +10,7 @@ function Search(props) {
                     <label htmlFor="language">Employee Search:</label>
                     <input
                         // value={props.search}
-                        onChange={handleInputChange}
+                        onChange={props.handleInputChange}
                         name="term"
                         list="term"
                         type="text"
@@ -44,7 +19,7 @@ function Search(props) {
                         id="term"
                     />
                     <button type="submit"
-                        onClick={handleFormSubmit}
+                        onClick={props.handleFormSubmit}
                         className="btn btn-success">
                         Search
         </button>
