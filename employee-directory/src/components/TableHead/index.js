@@ -1,7 +1,6 @@
 import React from "react";
 import "./style.css";
 import Row from "../Row";
-// import API from "../../utils/API";
 
 
 function TableHead(props) {
@@ -11,8 +10,8 @@ function TableHead(props) {
         <thead>
             <tr>
                 <th scope="col">Photo</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
+                <th scope="col" onClick={props.handleFirstNameSort}>First</th>
+                <th scope="col" onClick={props.handleLastNameSort}>Last</th>
                 <th scope="col">Age</th>
                 <th scope="col">Phone #</th>
                 <th scope="col">Email</th>

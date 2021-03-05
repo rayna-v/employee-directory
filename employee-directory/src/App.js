@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import API from "../src/utils/API";
@@ -9,6 +9,7 @@ import TableHead from "./components/TableHead";
 function App() {
   // defining state and methods to update state
   const [employees, setEmployees] = useState([]);
+  const [initialEmployeeList, setInitialEmployeeList] = useState([])
   const [searched, setSearched] = useState({
     search: "",
     filteredEmps: []
@@ -22,7 +23,19 @@ function App() {
   // hook to make initial API call on page load
   useEffect(() => {
     API.search().then(res => {
-      setEmployees(res.data.results);
+      const results = res.data.results
+      const cleanedResults = results.map((result) => {
+        return {
+          ...result,
+          name: {
+            ...result.name,
+            first: result.name.first.trim().toLowerCase(),
+            last: result.name.last.trim().toLowerCase(),
+          }
+        }
+      })
+      setEmployees(cleanedResults);
+      setInitialEmployeeList(cleanedResults)
     });
     // 
   }, []);
@@ -33,35 +46,37 @@ function App() {
     setSearched({
       search: value
     });
-    // const sorting = employees.filter(employee => employee.name.trim().toLowerCase().includes(value.trim().toLowerCase()));
-    // setSort({ sortEmps: sorting });
-    // console.log(sort.sortEmps)
-    searching(value)
+    const cleanedInput = value.trim().toLowerCase();
+    console.log(cleanedInput)
+    const foundEmployees = initialEmployeeList.filter(employee => {
+      return employee.name.first.includes(cleanedInput) || employee.name.last.includes(cleanedInput)
+    })
+    setEmployees(foundEmployees)
   }
-  function handleFormSubmit(event) {
-    event.preventDefault();
-    console.log("submitted")
-  }
-  function searching(value) {
-    console.log("searching")
-    const criteria = {
-      name: employees.name.first.includes(value)
 
-    }
-    // const filterEmps = employees.
+  function handleFirstNameSort() {
+    console.log("clicked")
+    const sortedEmployees = employees.sort((a, b) => {
+      const aFirstName = a.name.first;
+      const bFirstName = b.name.first;
+      return aFirstName.localeCompare(bFirstName)
+    });
+    setEmployees([...sortedEmployees])
   }
+
 
   return (
     <Router>
       <main className="wrapper">
         <h1>Employee Directory!</h1>
         <Search
-          handleFormSubmit={(event) => handleFormSubmit(event)}
           handleInputChange={(event) => handleInputChange(event)}
         />
         <div className="d-flex justify-content-center">
           <table className="table table-dark ">
-            <TableHead />
+            <TableHead
+              handleFirstNameSort={handleFirstNameSort}
+            />
             {employees.map(emp => {
               return (
                 <Row

@@ -9,7 +9,6 @@ function Search(props) {
                 <div className="form-group">
                     <label htmlFor="language">Employee Search:</label>
                     <input
-                        // value={props.search}
                         onChange={props.handleInputChange}
                         name="term"
                         list="term"
@@ -18,11 +17,6 @@ function Search(props) {
                         placeholder="Enter first or last name to begin"
                         id="term"
                     />
-                    <button type="submit"
-                        onClick={props.handleFormSubmit}
-                        className="btn btn-success">
-                        Search
-        </button>
                 </div>
             </form>
         </div >
