@@ -10,7 +10,7 @@ This project is my first Create React App. I wanted to practice with components 
 ![Employee-Tracker](./assets/employee-directory.gif)
 
 ### Deployment
-* Live URL: [Heroku]()
+* Live URL: [GitHub Pages](https://rayna-v.github.io/employee-directory/)
 * Repository: [GitHub](https://github.com/rayna-v/employee-directory)
 
 ### Installation & How to Use
